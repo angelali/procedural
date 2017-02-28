@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>experiments</title>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.16.6/lodash.js"></script>
+
+    <script type="text/javascript" src="lib/p5.js"></script>
+    <script type="text/javascript" src="lib/p5.dom.js"></script>
+    <script type="text/javascript" src="lib/p5.sound.js"></script>
+
+    <script type="text/javascript" src="util.js"></script>
+
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: monospace;
+            font-size: 12px;
+            height: 100vh;
+        }
+
+        .sidebar {
+            width: 400px;
+            height: 800px;
+            margin-right: 40px;
+            display: flex;
+        }
+
+        .sidebar ul,
+        .sidebar li {
+            list-style: none;
+            margin: 0;
+            cursor: pointer;
+        }
+
+        .sidebar li:hover {
+            text-decoration: underline;
+        }
+
+        .sidebar li.cool {
+            font-weight: 600;
+        }
+
+        .container {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <ul>
+            <li id="start">> start</li>
+            <li id="blank">> help my computer is overheating</li>
+            <br/>
+            <li id="00">00. dot grid walker ( 9/23/16 )</li>
+            <li id="01">01. some circles getting bigger ( 9/23/16 )</li>
+            <li id="02">02. the circles have colors ( 11/5/16 )</li>
+            <li id="03" class="cool">03. more circles at once ( 11/5/16 )</li>
+            <li id="04">04. swinging lines ( 1/16/17 ) </li>
+            <li id="05" class="cool">05. weeeird spinning lines ( 1/16/17 )</li>
+            <li id="06">06. spiky nautilus ( 1/17/17 )</li>
+            <li id="07">07. quiet gyrating frisbees ( 1/17/17 )</li>
+            <li id="08">08. spiroflower ( 1/18/17 )</li>
+            <li id="09">09. ???</li>
+        </ul>
+    </div>
+
+    <div class="container" id="container"></div>
+
+    <script>
+
+        const containerId = 'container';
+
+        function loadSketch() {
+            const sketchId = window.location.hash.slice(1) || 'start';
+
+            let loadScript = document.createElement('script');
+            loadScript.src = sketchId + '.js';
+            document.querySelector('body').appendChild(loadScript);
+        }
+
+        function attachClickHandlers() {
+            Array.prototype.forEach.call(document.getElementsByTagName('li'), function(li) {
+                li.addEventListener('click', function(e) {
+                    window.location.hash = e.target.id;
+                    window.location.reload();
+                });
+            })
+        }
+
+        loadSketch();
+        attachClickHandlers();
+
+    </script>
+
+</body>
+</html>
