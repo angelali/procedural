@@ -38,7 +38,6 @@ function setup() {
   // frameRate();
 
   makeCanvas();
-  canvasLength = width / 2;
   ellipseMode(RADIUS);
 
   noStroke();
@@ -52,7 +51,7 @@ function draw() {
   // draw the circles
   bunchOfCircles.forEach(function(circle) {
     fill(colors[circle.index]);
-    ellipse(canvasLength, canvasLength, circle.radius, circle.radius);
+    ellipse(width / 2, height / 2, circle.radius, circle.radius);
   });
 
   // update circles

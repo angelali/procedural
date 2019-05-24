@@ -5,30 +5,28 @@
 let canvasLength;
 
 let circleColor = -1;
-let circleRadius = 0;
+let circleRadius = 1;
 
 
 function reset() {
   circleColor *= -1;
-  circleRadius = 0;
+  circleRadius = 1;
 }
 
 /* woop woop */
 
 function setup() {
   makeCanvas();
-  canvasLength = width / 2;
-
   ellipseMode(RADIUS);
 }
 
 function draw() {
-  if (circleRadius > (canvasLength * Math.sqrt(2)) + 10) {
+  if (circleRadius > ((Math.max(width, height) / 2) * Math.sqrt(2) + 10)) {
     reset();
   }
 
   circleColor === 1 ? fill(255) : fill(0);
-  ellipse(canvasLength, canvasLength, circleRadius, circleRadius);
+  ellipse(width / 2, height / 2, circleRadius, circleRadius);
 
-  circleRadius += 10;
+  circleRadius = circleRadius + 10;
 }

@@ -2,7 +2,7 @@
  * lines pivoting around the MIDDLE of the line
  /*****************************************************************************/
 
-const DIM = 20;
+const DIM = 40;
 const PADDING = 10;
 const D_THETA_ITER = 2;
 const D_THETA_CELL = 12;
